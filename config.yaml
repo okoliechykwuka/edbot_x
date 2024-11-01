@@ -1,0 +1,10 @@
+llm:
+  # provider: anthropic
+  provider: openai
+  config:
+    # model: 'claude-3-haiku-20240307'
+    model: 'gpt-4o-mini'
+    temperature: 0.5
+    max_tokens: 1000
+    top_p: 1
+    stream: false

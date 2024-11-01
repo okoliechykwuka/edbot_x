@@ -1,0 +1,7 @@
+.env
+__pycache__/
+__pycache__
+multimodal.ipynb
+logs/
+litepaper.pdf
+img_data.json
