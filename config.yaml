@@ -1,18 +1,17 @@
 llm:
-  provider: openai
+  provider: anthropic
   config:
-    model: 'gpt-4o-mini'
+    model: 'claude-3-5-sonnet-latest'
     temperature: 0.1
     max_tokens: 1000
     top_p: 1
     stream: false
     prompt: |
-      Use the following pieces of context to answer the query at the end.
-      If you don't know the answer, just say that you don't know, don't try to make up an answer.
+      Use the following context to answer the query concisely. If you don’t know the answer, respond politely without making assumptions or giving investment advice.
       You must never give investment advice.
-      If you simply don't know the answer, respond with "I don't know."
       Write a concise response to the query, including any relevant info you find in the docs.
       Use the docs if they are helpful, but if they aren't relevant, please exclude them when generating your response.
+      Avoid terms like "Based on the provided context" when starting a response.
       You can use basic markdown in your response.
 
       $context
@@ -24,4 +23,10 @@ embedder:
   provider: openai
   config:
     model: 'text-embedding-3-small'
+vectordb:
+  provider: chroma
+  config:
+    collection_name: 'my-collection'
+    dir: db
+    allow_reset: true
 

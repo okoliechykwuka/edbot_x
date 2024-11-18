@@ -14,6 +14,7 @@ from theoriq.schemas import ExecuteRequestBody, TextItemBlock
 from theoriq.types import Currency
 dotenv.load_dotenv()
 
+
 # Configure logging to both file and console
 def setup_logging():
     """Configure logging to output to both file and console"""
@@ -71,6 +72,16 @@ class RAGAgent:
         """
         self.config = config
         try:
+            # Ensure db directory exists and is empty
+            db_path = "db"
+            if os.path.exists(db_path):
+                if not os.path.isdir(db_path):
+                    raise RuntimeError(f"{db_path} exists but is not a directory")
+                # Optional: Clean existing db on startup
+                # shutil.rmtree(db_path)
+                # os.makedirs(db_path)
+            else:
+                os.makedirs(db_path)
             self.app = App.from_config(config_path=config.CONFIG_PATH)
             self._initialize_sources()
         except Exception as e:
