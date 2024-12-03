@@ -7,11 +7,13 @@ import dotenv
 from embedchain import App
 
 from flask import Flask
-from theoriq import AgentConfig, ExecuteContext, ExecuteResponse
+from theoriq import AgentDeploymentConfiguration, ExecuteContext, ExecuteResponse
+from theoriq.api.v1alpha1.schemas import ExecuteRequestBody
 from theoriq.biscuit import TheoriqCost
-from theoriq.extra.flask import theoriq_blueprint
-from theoriq.schemas import ExecuteRequestBody, TextItemBlock
+from theoriq.dialog import TextItemBlock
+from theoriq.extra.flask.v1alpha1.flask import theoriq_blueprint
 from theoriq.types import Currency
+
 dotenv.load_dotenv()
 
 
@@ -194,7 +196,7 @@ class TheoriqServer:
         app = Flask(__name__)
         app.config['DEBUG'] = True
 
-        agent_config = AgentConfig.from_env()
+        agent_config = AgentDeploymentConfiguration.from_env()
         blueprint = theoriq_blueprint(agent_config, self.execute)
         app.register_blueprint(blueprint)
 
