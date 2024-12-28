@@ -1,0 +1,55 @@
+name: CI/CD Project Setup
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-project-setup:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Validate project structure
+    - name: Validate Project Structure
+      run: |
+        echo "Validating project directories..."
+        test -d backend || echo "Warning: 'backend' directory is missing"
+        test -d frontend || echo "Warning: 'frontend' directory is missing"
+        test -f docker-compose.yml || echo "Warning: 'docker-compose.yml' file is missing"
+
+    # Step 3: Set up Python environment
+    - name: Set up Python (for backend)
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    # Step 4: Install dependencies (placeholder, no code yet)
+    - name: Prepare for dependencies
+      run: |
+        echo "No backend dependencies to install yet"
+        echo "Add 'requirements.txt' to include backend dependencies"
+
+    # Step 5: Set up Node.js (for frontend)
+    - name: Set up Node.js (for frontend)
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Prepare for frontend dependencies
+      run: |
+        echo "No frontend dependencies to install yet"
+        echo "Add 'package.json' to include frontend dependencies"
+
+    # Step 6: Deployment simulation
+    - name: Simulate Deployment
+      run: |
+        echo "Simulating deployment..."
+        echo "Docker-compose file will be used once application is ready"
