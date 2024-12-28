@@ -1,5 +1,4 @@
 git+https://${GITHUB_TOKEN}@github.com/chain-ml/theoriq-agent-sdk.git#egg=theoriq[flask]
-git+https://${GITHUB_TOKEN}@github.com/chain-ml/theoriq-agent-sdk.git#egg=theoriq[flask]
 cryptography==43.0.3
 httpx>=0.27
 PyYAML==6.0.*
