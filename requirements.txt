@@ -1,4 +1,4 @@
-git+ssh://git@github.com/chain-ml/theoriq-agent-sdk.git#egg=theoriq[flask]
+git+https://${GITHUB_TOKEN}@github.com/chain-ml/theoriq-agent-sdk.git#egg=theoriq[flask]
 biscuit-python @ git+https://github.com/chain-ml/biscuit-python@main
 jsonschema==4.23.*
 safe-pysha3==1.0.*
